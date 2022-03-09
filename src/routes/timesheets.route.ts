@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   postTimeSheet,
   getTimeSheet,
-} from "../controllers/timesheet.controller";
+} from "../controllers/timesheets.controller";
 
 const timeSheetRouter = Router();
 

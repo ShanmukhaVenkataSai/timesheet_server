@@ -2,27 +2,25 @@ import mongoose from "mongoose";
 
 const timesheets = new mongoose.Schema(
   {
-    datetime: {
-      type: Date,
-      required: true,
-    },
     date: {
       type: String,
-      required: false,
-    },
-    checked: {
-      type: Boolean,
       required: true,
     },
     name: {
       type: String,
       required: true,
     },
-    duration: {
-      type: String,
-    },
-    value: {
+    hours: {
       type: Number,
+      required: true,
+    },
+    minutes: {
+      type: Number,
+      required: true,
+    },
+    timezone: {
+      type: String,
+      required: true,
     },
   },
   {

@@ -1,24 +1,25 @@
-import timeSheets from "../models/timesheet.model";
+import timeSheets from "../models/timesheets.model";
 import express from "express";
 import moment from "moment";
+import { PostTimeSheet } from "../interface/timesheets.interface";
 
 export const postTimeSheet = async (
   req: express.Request,
   res: express.Response
 ) => {
   try {
-    const body = req.body;
+    const body: PostTimeSheet[] = req.body;
     timeSheets
       .insertMany(body)
       .then((result) => {
         return res.status(200).send({ code: 200, data: result });
       })
       .catch((err) => {
-        console.error("ERROR INSERTING TIMESHEET", err);
+        console.error(new Date(), "ERROR INSERTING TIMESHEET", err);
         return res.status(409).send({ code: 409, error: "DB ERROR" });
       });
   } catch (err) {
-    console.error("CODE ERROR INSERTING TIMESHEET", err);
+    console.error(new Date(), "CODE ERROR INSERTING TIMESHEET", err);
     return res.status(409).send({ code: 409, error: "CODE ERROR" });
   }
 };
