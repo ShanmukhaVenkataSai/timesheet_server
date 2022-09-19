@@ -24,6 +24,8 @@ const port = process.env.PORT || 9000
 
 mongoose.connection.on("connected", (err, res) => {
   console.log("Database Connected");
+  console.log(process.env.MONGOURL,'mongourl',process.env.SECRETKEY);
+  
   app.listen(port, () => {
     console.log("APP Listening to port 9000");
   });

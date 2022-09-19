@@ -5,4 +5,5 @@ dotenv.config();
 
 const dbUrl: string = process.env.MONGOURL || "";
 
+
 mongoose.connect(dbUrl);
