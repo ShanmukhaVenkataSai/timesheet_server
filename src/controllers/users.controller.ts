@@ -10,9 +10,9 @@ const TTL = 3600;
 
 export const login = (req: express.Request, res: express.Response) => {
   try {
-    const { username, password }: Login = req.body;
+    const { email, password }: Login = req.body;
     usersModel
-      .findOne({ $or: [{ username: username }, { email: username }] })
+      .findOne({ email: email })
       .then(async (result: LoginResult) => {
         if (!result) {
           return res.status(404).send({ code: 404, data: "Invalid User" });
@@ -48,6 +48,7 @@ export const login = (req: express.Request, res: express.Response) => {
               accesstoken: accesstoken,
               ttl: TTL,
               user_id: result._id,
+              email:email
             },
           ])
           .then(() => {
@@ -77,7 +78,7 @@ export const login = (req: express.Request, res: express.Response) => {
 
 export const signup = (req: express.Request, res: express.Response) => {
   try {
-    const { username, email, password, confirmPassword }: Signup = req.body;
+    const { first_name,last_name, email, password, confirmPassword }: Signup = req.body;
     if (password != confirmPassword) {
       return res.status(403).send({ code: 403, error: "Invalid Password" });
     }
@@ -96,7 +97,8 @@ export const signup = (req: express.Request, res: express.Response) => {
           const hashPassword = bycrpt.hashSync(password, salt);
           usersModel
             .insertMany({
-              username,
+              first_name,
+              last_name,
               email,
               password: hashPassword,
             })

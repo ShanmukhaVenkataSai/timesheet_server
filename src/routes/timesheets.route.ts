@@ -10,6 +10,6 @@ timeSheetRouter.post("/postTimeSheet", postTimeSheet);
 
 // timeSheetRouter.get("/updateData", updateData);
 
-timeSheetRouter.get("/getTimeSheet", getTimeSheet);
+timeSheetRouter.post("/getTimeSheet", getTimeSheet);
 
 export default timeSheetRouter;

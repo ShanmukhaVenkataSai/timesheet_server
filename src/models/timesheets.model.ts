@@ -6,16 +6,22 @@ const timesheets = new mongoose.Schema(
       type: String,
       required: true,
     },
-    name: {
+    data:[{
+      name: {
+        type: String,
+        required: true,
+      },
+      hours: {
+        type: Number,
+        required: true,
+      },
+      minutes: {
+        type: Number,
+        required: true,
+      }
+    }],
+    user: {
       type: String,
-      required: true,
-    },
-    hours: {
-      type: Number,
-      required: true,
-    },
-    minutes: {
-      type: Number,
       required: true,
     },
     timezone: {

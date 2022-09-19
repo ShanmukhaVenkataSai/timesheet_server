@@ -1,10 +1,11 @@
 export interface Login {
-  username: string;
+  email: string;
   password: string;
 }
 
 export interface Signup extends Login {
-  email: string;
+  first_name: string;
+  last_name: string;
   confirmPassword: string;
 }
 
